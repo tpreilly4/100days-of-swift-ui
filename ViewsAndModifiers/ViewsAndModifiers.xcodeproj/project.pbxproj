@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E26C6BCD2B70616200FE5371 /* MyGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C6BCC2B70616200FE5371 /* MyGradients.swift */; };
+		E26C6BCF2B711D5300FE5371 /* MyCustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C6BCE2B711D5300FE5371 /* MyCustomViews.swift */; };
+		E26C6BD12B71234D00FE5371 /* MyCustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C6BD02B71234D00FE5371 /* MyCustomModifiers.swift */; };
 		E287D98C2B46EB330013E0D7 /* ViewsAndModifiersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287D98B2B46EB330013E0D7 /* ViewsAndModifiersApp.swift */; };
 		E287D98E2B46EB330013E0D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287D98D2B46EB330013E0D7 /* ContentView.swift */; };
 		E287D9902B46EB340013E0D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E287D98F2B46EB340013E0D7 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E26C6BCC2B70616200FE5371 /* MyGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGradients.swift; sourceTree = "<group>"; };
+		E26C6BCE2B711D5300FE5371 /* MyCustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomViews.swift; sourceTree = "<group>"; };
+		E26C6BD02B71234D00FE5371 /* MyCustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomModifiers.swift; sourceTree = "<group>"; };
 		E287D9882B46EB330013E0D7 /* ViewsAndModifiers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewsAndModifiers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E287D98B2B46EB330013E0D7 /* ViewsAndModifiersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsAndModifiersApp.swift; sourceTree = "<group>"; };
 		E287D98D2B46EB330013E0D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +61,9 @@
 				E287D98D2B46EB330013E0D7 /* ContentView.swift */,
 				E287D98F2B46EB340013E0D7 /* Assets.xcassets */,
 				E287D9912B46EB340013E0D7 /* Preview Content */,
+				E26C6BCC2B70616200FE5371 /* MyGradients.swift */,
+				E26C6BCE2B711D5300FE5371 /* MyCustomViews.swift */,
+				E26C6BD02B71234D00FE5371 /* MyCustomModifiers.swift */,
 			);
 			path = ViewsAndModifiers;
 			sourceTree = "<group>";
@@ -138,7 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E287D98E2B46EB330013E0D7 /* ContentView.swift in Sources */,
+				E26C6BCF2B711D5300FE5371 /* MyCustomViews.swift in Sources */,
+				E26C6BCD2B70616200FE5371 /* MyGradients.swift in Sources */,
 				E287D98C2B46EB330013E0D7 /* ViewsAndModifiersApp.swift in Sources */,
+				E26C6BD12B71234D00FE5371 /* MyCustomModifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

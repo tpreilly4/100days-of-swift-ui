@@ -7,20 +7,40 @@
 
 import SwiftUI
 
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .foregroundStyle(.white)
+            .padding()
+            .background(.ultraThinMaterial)
+            .clipShape(.rect(cornerRadius: 10))
+    }
+}
+
+extension View {
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+}
+
 struct ContentView: View {
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
             Text("Hello, world!")
-            Button("Hello, world!") {
-                // do nothing
+                .titleStyle()
+            CapsuleText(text: "But also")
+            Text("Goodbye, world!")
+                .titleStyle()
+            Button("🔥") {
+                print()
             }
-            .frame(width: 200, height: 200)
         }
-        .background(.red)
+        .modifier(RainbowBox(thickness: 5))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(MyGradients.init().linearGrad)
     }
 }
 
