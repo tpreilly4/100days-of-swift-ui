@@ -58,6 +58,7 @@ struct ContentView: View {
                 .pickerStyle(.segmented)
                 Section("Total check with tip"){
                     Text(totalCheck, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundColor(tipPercentage == 0 ? .red : .black)
                 }
                 Section("Amount owed per person is..."){
                     Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))

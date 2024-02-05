@@ -23,6 +23,7 @@ struct Watermark: ViewModifier {
     }
 }
 
+// ViewModifier that uses a property
 struct RainbowBox: ViewModifier {
     var thickness: CGFloat
     func body(content: Content) -> some View {
@@ -49,12 +50,26 @@ struct RainbowBox: ViewModifier {
     }
 }
 
+// Extension for RainbowBox that takes an argument and passes it along to the ViewModifier
 extension View {
     func rainbowBoxed(with thickness: CGFloat) -> some View {
         modifier(RainbowBox(thickness: thickness))
     }
 }
 
+struct BigBlueTitle: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.mint)
+    }
+}
+
+extension View {
+    func bigBlueTitleStyle() -> some View {
+        modifier(BigBlueTitle())
+    }
+}
 
 #Preview {
     ContentView()

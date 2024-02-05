@@ -30,7 +30,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Hello, world!")
-                .titleStyle()
+                .bigBlueTitleStyle()
             CapsuleText(text: "But also")
             Text("Goodbye, world!")
                 .titleStyle()
