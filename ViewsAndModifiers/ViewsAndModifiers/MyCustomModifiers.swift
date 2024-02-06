@@ -71,6 +71,20 @@ extension View {
     }
 }
 
+// For RPS, enlarges emojis.
+struct GameChoice: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 100))
+    }
+}
+
+extension View {
+    func gameChoiceFontStyle() -> some View {
+        modifier(GameChoice())
+    }
+}
+
 #Preview {
     ContentView()
 }

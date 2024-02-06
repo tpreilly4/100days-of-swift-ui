@@ -11,8 +11,8 @@ import SwiftUI
 
 struct MyGradients {
     let linearGrad = LinearGradient(stops: [
-        Gradient.Stop(color: .orange, location: 0),
-        Gradient.Stop(color: .red, location: 1),
+        Gradient.Stop(color: .yellow, location: 0),
+        Gradient.Stop(color: .mint, location: 1),
         ], startPoint: .top, endPoint: .bottom)
     
     let radialGrad = RadialGradient(stops: [
