@@ -18,7 +18,7 @@ struct ContentView: View {
     }
     
     @State private var sleepAmount = 8.0
-    @State private var coffeeAmount = 0.0
+    @State private var coffeeAmount = 0
     @State private var wakeUp = defaultWakeTime
     
     @State private var alertTitle = ""
@@ -28,31 +28,40 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Form {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("When do you want to wake up?")
-                        .font(.headline)
+                Section("When do you want to wake up?") {
                     DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
                         .labelsHidden()
+                        .frame(maxWidth:.infinity)
+                        .datePickerStyle(.wheel)
+                        .onChange(of: wakeUp) {
+                            calculateBedtime()
+                        }
                 }
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Desired amount of sleep")
-                        .font(.headline)
+                Section("Desired amount of sleep") {
                     Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...16, step: 0.25)
+                        .onChange(of: sleepAmount) {
+                            calculateBedtime()
+                        }
                 }
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Daily coffee intake")
+                Section("Daily Coffee Intake") {
+                    Picker("^[\(coffeeAmount) cup](inflect: true)", selection: $coffeeAmount){
+                        ForEach(0..<20){
+                            Text("^[\($0) cup](inflect: true)")
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .onChange(of: coffeeAmount) {
+                        calculateBedtime()
+                    }
+                }
+                Section(alertTitle){
+                    Text(alertMessage)
                         .font(.headline)
-                    Stepper("^[\(coffeeAmount) cup](inflect: true)", value: $coffeeAmount, in: 0...20)
                 }
             }
             .navigationTitle("BetterRest")
             .toolbar {
                 Button("Calculate", action: calculateBedtime)
-            }
-            .alert(alertTitle, isPresented: $showingAlert) {
-                Button("OK") { }
-            } message : {
-                Text(alertMessage)
             }
         }
     }
