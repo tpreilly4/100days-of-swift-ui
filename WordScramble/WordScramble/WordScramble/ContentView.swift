@@ -8,33 +8,114 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = ["Tom", "Emma", "Otis", "Frank"]
+    @State private var usedWords = [String]()
+    @State private var rootWord = ""
+    @State private var newWord = ""
+    
+    @State private var errorTitle = ""
+    @State private var errorMessage = ""
+    @State private var showingError = false
         
     var body: some View {
-        VStack {
-            List (people, id: \.self) { person in
-                HStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.mint)
-                    Text("Hello, \(person)!")
+        NavigationStack {
+            List {
+                Section {
+                    TextField("Enter your word", text: $newWord)
+                        .onSubmit(addNewWord)
+                        .onAppear(perform: getFile)
+                        .alert(errorTitle, isPresented: $showingError) { } message: {
+                            Text(errorMessage)
+                        }                        
+                        .textInputAutocapitalization(.never)
+                    Button("Add") {
+                        addNewWord()
+                    }
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                }
+                Section {
+                    ForEach(usedWords, id: \.self) { word in
+                        HStack {
+                            Image(systemName: "\(word.count).circle")
+                            Text(word)
+                        }
+                    }
                 }
             }
-            Button("Get the file"){
-                getFile()
+            .navigationTitle(rootWord)
+        }
+    }
+    
+    func wordError(title: String, message: String) {
+        errorTitle = title
+        errorMessage = message
+        showingError = true
+    }
+    
+    func isReal(word: String) -> Bool {
+        let checker = UITextChecker()
+        let range = NSRange(location: 0, length: word.utf16.count)
+        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+
+        return misspelledRange.location == NSNotFound
+    }
+    
+    func isPossible(word: String) -> Bool {
+        var tempWord = rootWord
+
+        for letter in word {
+            if let pos = tempWord.firstIndex(of: letter) {
+                tempWord.remove(at: pos)
+            } else {
+                return false
             }
         }
+
+        return true
+    }
+    
+    func isOriginal(word: String) -> Bool {
+        !usedWords.contains(word)
+    }
+    
+    func addNewWord() {
+        guard newWord.count > 0 else { return }
+        newWord = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard isOriginal(word: newWord) else {
+            wordError(title: "Word used already", message: "Be more original")
+            return
+        }
+
+        guard isPossible(word: newWord) else {
+            wordError(title: "Word not possible", message: "You can't spell that word from '\(rootWord)'!")
+            return
+        }
+
+        guard isReal(word: newWord) else {
+            wordError(title: "Word not recognized", message: "You can't just make them up, you know!")
+            return
+        }
+        
+        withAnimation {
+            usedWords.insert(newWord, at :0)
+        }
+        
+        newWord = ""
     }
     
     func getFile() {
         if let fileURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
-            print(fileURL)
+            
             if let fileContents = try? String(contentsOf: fileURL) {
                 // we loaded the file into a string!
                 let allTheWords = fileContents.components(separatedBy: "\n")
-                print(allTheWords.randomElement())
+                rootWord = allTheWords.randomElement() ?? "silkworm"
+                print(rootWord)
+                return
             }
         }
+        
+        fatalError("Could not load start.txt from app bundle.")
     }
 }
 
