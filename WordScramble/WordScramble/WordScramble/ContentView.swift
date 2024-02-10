@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
+    @State private var score = 0
+
     
     @State private var errorTitle = ""
     @State private var errorMessage = ""
@@ -33,6 +35,10 @@ struct ContentView: View {
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 }
                 Section {
+                    Text("Your score: \(score)")
+                        .font(.headline)
+                }
+                Section {
                     ForEach(usedWords, id: \.self) { word in
                         HStack {
                             Image(systemName: "\(word.count).circle")
@@ -42,9 +48,23 @@ struct ContentView: View {
                 }
             }
             .navigationTitle(rootWord)
+            .toolbar{
+                ToolbarItem(placement: .automatic) {
+                    Button("Restart") {
+                        restartGame()
+                    }
+                }
+            }
         }
     }
-    
+    func restartGame(){
+        usedWords = [String]()
+        rootWord = ""
+        newWord = ""
+        score = 0
+        
+        getFile()
+    }
     func wordError(title: String, message: String) {
         errorTitle = title
         errorMessage = message
@@ -81,8 +101,18 @@ struct ContentView: View {
         guard newWord.count > 0 else { return }
         newWord = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
+        guard newWord.count > 2 else {
+            wordError(title: "Word too short", message: "Words should be at least 3 characters long!")
+            return
+        }
+        
+        guard newWord != rootWord else {
+            wordError(title: "You just used the starting word", message: "Nice try, dick!")
+            return
+        }
+        
         guard isOriginal(word: newWord) else {
-            wordError(title: "Word used already", message: "Be more original")
+            wordError(title: "Word used already", message: "Be more original.")
             return
         }
 
@@ -99,7 +129,7 @@ struct ContentView: View {
         withAnimation {
             usedWords.insert(newWord, at :0)
         }
-        
+        score += newWord.count
         newWord = ""
     }
     
