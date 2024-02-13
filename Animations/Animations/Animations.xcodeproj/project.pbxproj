@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E2324E4A2B7950380097FA18 /* Part2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E492B7950380097FA18 /* Part2View.swift */; };
+		E2324E4C2B7BCFB20097FA18 /* TransitionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E4B2B7BCFB20097FA18 /* TransitionViews.swift */; };
 		E26C6C3B2B77B4D500FE5371 /* AnimationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C6C3A2B77B4D500FE5371 /* AnimationsApp.swift */; };
 		E26C6C3D2B77B4D500FE5371 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C6C3C2B77B4D500FE5371 /* ContentView.swift */; };
 		E26C6C3F2B77B4D700FE5371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E26C6C3E2B77B4D700FE5371 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		E2324E492B7950380097FA18 /* Part2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Part2View.swift; sourceTree = "<group>"; };
+		E2324E4B2B7BCFB20097FA18 /* TransitionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViews.swift; sourceTree = "<group>"; };
 		E26C6C372B77B4D500FE5371 /* Animations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E26C6C3A2B77B4D500FE5371 /* AnimationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsApp.swift; sourceTree = "<group>"; };
 		E26C6C3C2B77B4D500FE5371 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				E26C6C402B77B4D700FE5371 /* Preview Content */,
 				E26C6C482B77C0DB00FE5371 /* OtherContentView.swift */,
 				E2324E492B7950380097FA18 /* Part2View.swift */,
+				E2324E4B2B7BCFB20097FA18 /* TransitionViews.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				E26C6C3D2B77B4D500FE5371 /* ContentView.swift in Sources */,
 				E26C6C3B2B77B4D500FE5371 /* AnimationsApp.swift in Sources */,
 				E2324E4A2B7950380097FA18 /* Part2View.swift in Sources */,
+				E2324E4C2B7BCFB20097FA18 /* TransitionViews.swift in Sources */,
 				E26C6C492B77C0DB00FE5371 /* OtherContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
