@@ -31,7 +31,7 @@ struct OtherContentView: View {
                 }
             }
             .myRoundButton(with: .blue, with: animationAmount)
-            .rotation3DEffect(.degrees(rotationAmount), axis: (x: 0, y: 1, z: 0))
+            .rotation3DEffect(.degrees(rotationAmount), axis: (x: 1, y: 1, z: 1))
 
         }
     }

@@ -21,9 +21,39 @@ extension View {
     }
 }
 
+struct CorrectChoiceAnimation: ViewModifier {
+    var rotationDegrees: Double
+    func body(content: Content) -> some View {
+        content
+            .rotationEffect(.degrees(rotationDegrees), anchor:(.center))
+    }
+}
+
+extension View {
+    func correctChoiceAnimation(with rotation: Double) -> some View {
+        modifier(CorrectChoiceAnimation(rotationDegrees: rotation))
+    }
+}
+
+struct IncorrectChoiceAnimation: ViewModifier {
+    var opacity: Double
+    var scale: Double
+    func body(content: Content) -> some View {
+        content
+            .opacity(opacity)
+            .scaleEffect(x:scale, y:scale)
+    }
+}
+
+extension View {
+    func incorrectChoiceAnimation(with opacity: Double, with scale: Double) -> some View {
+        modifier(IncorrectChoiceAnimation(opacity: opacity, scale: scale))
+    }
+}
+
 struct ContentView: View {
     
-    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"]
+    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "US"]
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var showingScore = false
     @State private var showingGameOver = false
@@ -31,6 +61,11 @@ struct ContentView: View {
     @State private var scoreMessage = ""
     @State private var scoreNumber = 0
     @State private var turns = 0
+    
+    // animations
+    @State private var flagTapRotation = 0.0
+    @State private var flagTapOpacity = 1.0
+    @State private var flagTapScale = 1.0
     
     var body: some View {
         ZStack{
@@ -49,12 +84,35 @@ struct ContentView: View {
                     }
                     
                     ForEach(0..<3) { number in
-                        Button {
-                            flagTapped(number)
+                        if number == correctAnswer {
+                            Button {
+                                withAnimation {
+                                    if flagTapped(number) {
+                                        flagTapRotation += 360
+                                        flagTapOpacity -= 0.75
+                                    }
+                                }
+                            }
+                            label : {
+                                Image(countries[number].lowercased())
+                                    .flagImageStyle()
+                                    .correctChoiceAnimation(with: flagTapRotation)
+                            }
                         }
-                        label : {
-                            Image(countries[number].lowercased())
-                                .flagImageStyle()
+                        else {
+                            Button {
+                                withAnimation {
+                                    if !flagTapped(number) {
+                                        flagTapOpacity -= 0.75
+                                        flagTapScale -= 0.25
+                                    }
+                                }
+                            }
+                            label : {
+                                Image(countries[number].lowercased())
+                                    .flagImageStyle()
+                                    .incorrectChoiceAnimation(with: flagTapOpacity, with: flagTapScale)
+                            }
                         }
                     }
                 }
@@ -81,14 +139,20 @@ struct ContentView: View {
         }
     }
     
-    func flagTapped(_ number: Int){
+    func flagTapped(_ number: Int) -> Bool {
         if number == correctAnswer {
             scoreNumber += 1
             scoreTitle = "Correct! 🥳"
+            updateScore()
+            return true
         } else {
             scoreTitle = "Wrong. That's the flag of \(countries[number])!\n😢"
+            updateScore()
+            return false
         }
-        
+    }
+    
+    func updateScore() {
         if turns < 7 {
             scoreMessage = "Your score is: \(scoreNumber)"
             showingScore = true
@@ -102,6 +166,8 @@ struct ContentView: View {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         turns += 1
+        flagTapOpacity = 1.0
+        flagTapScale = 1.0
     }
     
     func resetGame() {
