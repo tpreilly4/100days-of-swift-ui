@@ -12,6 +12,7 @@
 		E2324E5E2B7D50F60097FA18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2324E5D2B7D50F60097FA18 /* Assets.xcassets */; };
 		E2324E612B7D50F60097FA18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2324E602B7D50F60097FA18 /* Preview Assets.xcassets */; };
 		E2324E682B7D63110097FA18 /* MyGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E672B7D63110097FA18 /* MyGradients.swift */; };
+		E2324E6A2B7E5C560097FA18 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E692B7E5C560097FA18 /* Views.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		E2324E5D2B7D50F60097FA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2324E602B7D50F60097FA18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E2324E672B7D63110097FA18 /* MyGradients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGradients.swift; sourceTree = "<group>"; };
+		E2324E692B7E5C560097FA18 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 		E2324E582B7D50F40097FA18 /* TimesTables */ = {
 			isa = PBXGroup;
 			children = (
+				E2324E692B7E5C560097FA18 /* Views.swift */,
 				E2324E672B7D63110097FA18 /* MyGradients.swift */,
 				E2324E592B7D50F40097FA18 /* TimesTablesApp.swift */,
 				E2324E5B2B7D50F40097FA18 /* ContentView.swift */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2324E6A2B7E5C560097FA18 /* Views.swift in Sources */,
 				E2324E5C2B7D50F40097FA18 /* ContentView.swift in Sources */,
 				E2324E682B7D63110097FA18 /* MyGradients.swift in Sources */,
 				E2324E5A2B7D50F40097FA18 /* TimesTablesApp.swift in Sources */,
