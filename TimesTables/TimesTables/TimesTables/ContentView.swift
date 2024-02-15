@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    var questionNumberChoices = [5,10,20]
     @State private var limit = 10
+    @State private var numberOfQuestions = 10.0
+    @State private var showingForm = true
+    @State private var showingQuestions = false
+    @State private var questionsList : [Question] = []
+    @State private var answersList : [Int] = []
     
     @State private var firstNumber = 6
     @State private var secondNumber = 9
@@ -24,33 +30,87 @@ struct ContentView: View {
     @State private var userAnswer = []
     
     var body: some View {
-        VStack {
-            Stepper(value: $limit) {
-                withAnimation{
-                    Text("Multiply up to: \(limit)")
+        NavigationStack{
+            VStack{
+                if showingForm {
+                    VStack{
+                        HStack{
+                            Text("How many questions?")
+                            Spacer()
+                            Picker("", selection: $numberOfQuestions){
+                                ForEach(questionNumberChoices, id: \.self) {
+                                    Text("\($0) Questions")
+                                }
+                            }
+                        }
+                        .cardViewStyle()
+                        Stepper(value: $limit, in: 1...15) {
+                            Text("With numbers up to: \(limit)")
+                        }
+                        .cardViewStyle()
+                        Button("Generate Questions"){
+                            questionsList = GenerateAllQuestions()
+                            withAnimation{
+                                showingForm.toggle()
+                                showingQuestions.toggle()
+                            }
+                        }
+                        .cardViewStyle()
+                    }
+                    .padding(.top)
+                    .transition(.slide)
+                }
+                
+                Spacer()
+                
+                if showingQuestions {
+                    VStack{
+                        Button("Done!") {
+                            withAnimation{
+                                showingForm.toggle()
+                                showingQuestions.toggle()
+                            }
+                        }
+                        List{
+                            ForEach(questionsList, id: \.self) { q in
+                                Section("\(q.title)"){
+                                    Text("What is \(q.firstNumber) * \(q.secondNumber)?")
+                                }
+                            }
+                            .listRowBackground(Color.white)
+                        }
+                        .listSectionSpacing(.leastNonzeroMagnitude)
+                        .scrollContentBackground(.hidden)
+                    }
+                    .transition(.slide)
                 }
             }
-            .transition(.slide)
-            .padding()
-            .onChange(of: limit) {
-                SetupQuestion()
-            }
-            Text("What is \(firstNumber) * \(secondNumber)?")
-                .textCapsuleStyle()
-            NumberPad(lastTappedNumber: lastTappedNumber, numberTapRotation: numberTapRotation)
-                .onChange(of: lastTappedNumber){
-                    print("Hello")
-                }
-            Text("The answer is\n\(actualAnswer)")
-                .textCapsuleStyle()
-            Spacer()
+            .frame(maxHeight: .infinity)
+            .background(MyGradients.init().linearGrad)
+            .navigationTitle("Practice Multiplication!")
         }
-        .background(MyGradients.init().linearGrad)
     }
     
-    func SetupQuestion(){
-        firstNumber = Int.random(in: 0...limit)
-        secondNumber = Int.random(in: 0...limit)
+    func GenerateAllQuestions() -> [Question] {
+        var questions : [Question] = []
+        for num in 0...Int(numberOfQuestions) {
+            let first = Int.random(in: 0...limit)
+            let second = Int.random(in: 0...limit)
+            questions.append(Question(questionNumber: num, firstNumber: first, secondNumber: second))
+        }
+        return questions
+    }
+}
+
+struct Question : Hashable {
+    var questionNumber: Int
+    var firstNumber: Int
+    var secondNumber: Int
+    var title: String {
+        "Question \(self.questionNumber + 1)"
+    }
+    var answer : Int {
+        self.firstNumber * self.secondNumber
     }
 }
 
