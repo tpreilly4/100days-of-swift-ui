@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var answer = ""
     var questionNumberChoices = [5,10,20]
     @State private var limit = 10
-    @State private var numberOfQuestions = 10.0
+    @State private var numberOfQuestions = 10
     @State private var showingForm = true
     @State private var showingQuestions = false
     @State private var questionsList : [Question] = []
-    @State private var answersList : [Int] = []
+    @State private var answersList : [String] = []
     
     @State private var firstNumber = 6
     @State private var secondNumber = 9
@@ -74,7 +75,7 @@ struct ContentView: View {
                         List{
                             ForEach(questionsList, id: \.self) { q in
                                 Section("\(q.title)"){
-                                    Text("What is \(q.firstNumber) * \(q.secondNumber)?")
+                                    TextField("What is \(q.firstNumber) * \(q.secondNumber)?", text:$answer)
                                 }
                             }
                             .listRowBackground(Color.white)
@@ -103,6 +104,7 @@ struct ContentView: View {
 }
 
 struct Question : Hashable {
+    var userAnswer: String = "\(0)"
     var questionNumber: Int
     var firstNumber: Int
     var secondNumber: Int
