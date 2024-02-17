@@ -13,6 +13,8 @@
 		E2324E812B7EC0150097FA18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2324E802B7EC0150097FA18 /* Preview Assets.xcassets */; };
 		E2324E882B8132880097FA18 /* OnDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E872B8132880097FA18 /* OnDeleteView.swift */; };
 		E2324E8A2B8135030097FA18 /* UserDefaultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E892B8135030097FA18 /* UserDefaultsView.swift */; };
+		E2324E8C2B81524E0097FA18 /* iExpenseHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E8B2B81524E0097FA18 /* iExpenseHome.swift */; };
+		E2324E8E2B815B250097FA18 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E8D2B815B250097FA18 /* AddExpenseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		E2324E802B7EC0150097FA18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E2324E872B8132880097FA18 /* OnDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeleteView.swift; sourceTree = "<group>"; };
 		E2324E892B8135030097FA18 /* UserDefaultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsView.swift; sourceTree = "<group>"; };
+		E2324E8B2B81524E0097FA18 /* iExpenseHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseHome.swift; sourceTree = "<group>"; };
+		E2324E8D2B815B250097FA18 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 			children = (
 				E2324E872B8132880097FA18 /* OnDeleteView.swift */,
 				E2324E792B7EC0130097FA18 /* iExpenseApp.swift */,
+				E2324E8B2B81524E0097FA18 /* iExpenseHome.swift */,
+				E2324E8D2B815B250097FA18 /* AddExpenseView.swift */,
 				E2324E7B2B7EC0130097FA18 /* ContentView.swift */,
 				E2324E7D2B7EC0150097FA18 /* Assets.xcassets */,
 				E2324E892B8135030097FA18 /* UserDefaultsView.swift */,
@@ -143,8 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2324E8C2B81524E0097FA18 /* iExpenseHome.swift in Sources */,
 				E2324E7C2B7EC0130097FA18 /* ContentView.swift in Sources */,
 				E2324E882B8132880097FA18 /* OnDeleteView.swift in Sources */,
+				E2324E8E2B815B250097FA18 /* AddExpenseView.swift in Sources */,
 				E2324E7A2B7EC0130097FA18 /* iExpenseApp.swift in Sources */,
 				E2324E8A2B8135030097FA18 /* UserDefaultsView.swift in Sources */,
 			);

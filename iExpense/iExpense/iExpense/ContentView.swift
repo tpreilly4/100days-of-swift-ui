@@ -8,8 +8,7 @@
 import SwiftUI
 import Observation
 
-@Observable
-class User : Codable {
+struct User : Codable {
     var firstName = "Bilbo"
     var lastName = "Baggins"
     var helloIcon = "sun.haze.circle"
@@ -30,16 +29,9 @@ struct SecondView: View {
             .onTapGesture {
                 dismiss()
             }
-        
-        Button("Retrieve User") {
-            let decoder = JSONDecoder()
-            let userData = UserDefaults.standard.object(forKey: "UserData")
-            if let data = try? decoder.decode(User.self, from: userData) {
-                print(data)
-            }
         }
     }
-}
+
 
 struct ContentView: View {
     @State private var user = User()
@@ -58,9 +50,16 @@ struct ContentView: View {
             
             Button("Save User") {
                 let encoder = JSONEncoder()
-
+                var encodedData : Data = Data()
                 if let data = try? encoder.encode(user) {
                     UserDefaults.standard.set(data, forKey: "UserData")
+                    encodedData = data
+                }
+                
+                let decoder = JSONDecoder()
+                //var userData = UserDefaults.standard.object(forKey: "UserData")
+                if let decodeddata = try? decoder.decode(User.self, from: encodedData) {
+                    print(decodeddata)
                 }
             }
         }
