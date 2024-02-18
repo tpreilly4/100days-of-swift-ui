@@ -42,18 +42,40 @@ struct iExpenseHome: View {
     var body : some View {
         NavigationStack{
             List{
-                ForEach(expenses.items) { item in
-                    HStack{
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.category)
+                Section ("Personal Expenses") {
+                    ForEach(expenses.items) { item in
+                        if item.category == "Personal" {
+                            HStack{
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.category)
+                                }
+                                Spacer()
+                                Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                    .foregroundStyle(amountColorChooser(amt: item.amount))
+                            }
                         }
-                        Spacer()
-                        Text(item.amount, format: .currency(code: "USD"))
                     }
+                    .onDelete(perform: removeItems)
+                }                
+                Section ("Business Expenses") {
+                    ForEach(expenses.items) { item in
+                        if item.category == "Business" {
+                            HStack{
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.category)
+                                }
+                                Spacer()
+                                Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                    .foregroundStyle(amountColorChooser(amt: item.amount))
+                            }
+                        }
+                    }
+                    .onDelete(perform: removeItems)
                 }
-                .onDelete(perform: removeItems)
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -65,6 +87,17 @@ struct iExpenseHome: View {
                 AddExpenseView(expenses: expenses)
             }
         }
+    }
+    
+    func amountColorChooser(amt: Double) -> Color {
+        if amt < 10 {
+            return Color.green
+        } else if amt < 100 {
+            return Color.orange
+        } else {
+            return Color.red
+        }
+        
     }
     
     func removeItems(at offsets: IndexSet) {
