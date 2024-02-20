@@ -25,11 +25,6 @@ struct MissionView: View {
         }
     }
     
-    struct CrewMember {
-        let role: String
-        let astronaut: Astronaut
-    }
-    
     var body: some View {
         ScrollView{
             VStack{
@@ -48,7 +43,10 @@ struct MissionView: View {
                             badgeRotation = 360
                         }
                     }
-                
+                Text(mission.formattedLaunchDate)
+                    .padding()
+                    .background(.lightBackground)
+                    .clipShape(.capsule)
                 VStack(alignment: .leading) {
                     Text("Crew")
                         .font(.title.bold())
@@ -83,12 +81,10 @@ struct MissionView: View {
                             }
                         }
                     }
-                    Rectangle()
-                        .frame(height: 2)
-                        .foregroundStyle(.lightBackground)
-                        .padding(.vertical)
-                    Text("Mission Highlights")
+                    ThickDivider()
+                    Text("Mission Highlights 🚀")
                         .font(.title.bold())
+                        .padding(.bottom)
                     
                     Text(mission.description)
                     
