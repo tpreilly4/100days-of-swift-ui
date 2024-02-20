@@ -20,13 +20,13 @@ struct MoonshotHome: View {
                 LazyVGrid(columns: gridLayout) {
                     ForEach(missions) { mission in
                         NavigationLink {
-                            Text("Details")
+                            MissionView(mission: mission, astronauts: astronauts)
                         } label : {
                             VStack {
                                 Image(mission.image)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 100, height: 100)
+                                    .frame(width: 150, height: 100)
                                     .padding()
                                 
                                 VStack{
