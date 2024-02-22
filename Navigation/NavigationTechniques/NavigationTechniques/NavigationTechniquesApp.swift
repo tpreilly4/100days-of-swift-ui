@@ -11,7 +11,7 @@ import SwiftUI
 struct NavigationTechniquesApp: App {
     var body: some Scene {
         WindowGroup {
-            PartOneView()
+            PartTwoView()
         }
     }
 }

@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct PartTwoView: View {
+    //@State private var path = NavigationPath()
+    @State private var pathStore = PathStore()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            NavigationStack(path: $pathStore.path) {
+                List(0..<20) { i in
+                    if (i % 2 == 0) {
+                        Button("Select \(i)") {
+                            pathStore.path.append(i)
+                        }
+                    } else {
+                        NavigationLink("Select \(i)", value: "\(i)")
+                    }
+                }
+                .navigationDestination(for: Int.self) { selection in
+                    DetailView(number: selection)
+                }
+                .navigationDestination(for: String.self) { selection in
+                    Text("You selected a string, \"\(selection)\"")
+                }
+                .navigationTitle("Strings are odd #'s")
+            }
+            Button("Try this") {
+                pathStore.path.append(55)
+            }
+        }
     }
 }
 
