@@ -14,6 +14,7 @@
 		E2324F992B87D8F30097FA18 /* PartTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324F982B87D8F30097FA18 /* PartTwoView.swift */; };
 		E2324F9B2B87E5430097FA18 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324F9A2B87E5430097FA18 /* DetailView.swift */; };
 		E2324F9D2B87E9BE0097FA18 /* PathStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324F9C2B87E9BE0097FA18 /* PathStore.swift */; };
+		E2324F9F2B87F8D90097FA18 /* PartThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324F9E2B87F8D90097FA18 /* PartThreeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E2324F982B87D8F30097FA18 /* PartTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTwoView.swift; sourceTree = "<group>"; };
 		E2324F9A2B87E5430097FA18 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E2324F9C2B87E9BE0097FA18 /* PathStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathStore.swift; sourceTree = "<group>"; };
+		E2324F9E2B87F8D90097FA18 /* PartThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartThreeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				E2324F8C2B879E900097FA18 /* PartOneView.swift */,
 				E2324F9A2B87E5430097FA18 /* DetailView.swift */,
 				E2324F982B87D8F30097FA18 /* PartTwoView.swift */,
+				E2324F9E2B87F8D90097FA18 /* PartThreeView.swift */,
 				E2324F9C2B87E9BE0097FA18 /* PathStore.swift */,
 				E2324F8E2B879E920097FA18 /* Assets.xcassets */,
 				E2324F902B879E920097FA18 /* Preview Content */,
@@ -148,6 +151,7 @@
 			files = (
 				E2324F9D2B87E9BE0097FA18 /* PathStore.swift in Sources */,
 				E2324F8D2B879E900097FA18 /* PartOneView.swift in Sources */,
+				E2324F9F2B87F8D90097FA18 /* PartThreeView.swift in Sources */,
 				E2324F9B2B87E5430097FA18 /* DetailView.swift in Sources */,
 				E2324F992B87D8F30097FA18 /* PartTwoView.swift in Sources */,
 				E2324F8B2B879E900097FA18 /* NavigationTechniquesApp.swift in Sources */,
