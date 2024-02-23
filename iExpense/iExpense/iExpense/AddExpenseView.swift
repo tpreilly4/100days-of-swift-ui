@@ -10,9 +10,9 @@ import SwiftUI
 struct AddExpenseView: View {
     @Environment(\.dismiss) var dismiss
     
-    var expenses: Expenses
+    @Binding var expenses: Expenses
     
-    @State private var name = ""
+    @State private var name = "Enter Expense Name"
     @State private var category = "Personal"
     @State private var amount = 0.0
 
@@ -32,7 +32,6 @@ struct AddExpenseView: View {
                 TextField("Amount", value: $amount, format: .currency(code: "USD"))
                     .keyboardType(.decimalPad)
             }
-            .navigationTitle("Add new expense")
             .toolbar {
                 Button("Save") {
                     let item = ExpenseItem(name: name, category: category, amount: amount)
@@ -40,10 +39,8 @@ struct AddExpenseView: View {
                     dismiss()
                 }
             }
+            .navigationTitle($name)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
-}
-
-#Preview {
-    AddExpenseView(expenses: Expenses())
 }

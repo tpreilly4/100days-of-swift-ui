@@ -14,9 +14,7 @@ struct MoonshotHomeList: View {
     var body: some View {
             ScrollView() {
                 ForEach(missions) { mission in
-                    NavigationLink {
-                        MissionView(mission: mission, astronauts: astronauts)
-                    } label : {
+                    NavigationLink(value: mission) {
                         HStack {
                             Image(mission.image)
                                 .resizable()
@@ -47,5 +45,8 @@ struct MoonshotHomeList: View {
             .navigationTitle("Moonshot")
             .background(.darkBackground)
             .preferredColorScheme(.dark)
+            .navigationDestination(for: Mission.self) { m in
+                MissionView(mission: m, astronauts: astronauts)
+            }
         }
 }

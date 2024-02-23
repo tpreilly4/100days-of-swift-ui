@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExpenseItem : Identifiable, Codable {
+struct ExpenseItem : Identifiable, Codable, Hashable {
     var id = UUID()
     let name: String
     let category: String
@@ -79,12 +79,9 @@ struct iExpenseHome: View {
             }
             .navigationTitle("iExpense")
             .toolbar {
-                Button("Add Expense", systemImage: "plus") {
-                    showingAddExpense = true
+                NavigationLink(destination: AddExpenseView(expenses: $expenses)) {
+                    Image(systemName: "plus")
                 }
-            }
-            .sheet(isPresented: $showingAddExpense){
-                AddExpenseView(expenses: expenses)
             }
         }
     }
