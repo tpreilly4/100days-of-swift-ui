@@ -24,6 +24,7 @@ struct AddHabitView: View {
                 Button("Save") {
                     saveNewHabit()
                 }
+                .disabled(name.isEmpty)
             }
             .navigationTitle("New Habit")
             .alert("Missing info", isPresented: $showingValidationAlert) {
