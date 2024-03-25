@@ -17,6 +17,7 @@
 		E259A8862B96A5960088A033 /* CupcakeCornerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E259A8852B96A5960088A033 /* CupcakeCornerHomeView.swift */; };
 		E259A8882B96A5C70088A033 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E259A8872B96A5C70088A033 /* Order.swift */; };
 		E259A88A2B96AA1B0088A033 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E259A8892B96AA1B0088A033 /* AddressView.swift */; };
+		E259A88C2B975E6C0088A033 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E259A88B2B975E6C0088A033 /* CheckoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		E259A8852B96A5960088A033 /* CupcakeCornerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupcakeCornerHomeView.swift; sourceTree = "<group>"; };
 		E259A8872B96A5C70088A033 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E259A8892B96AA1B0088A033 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		E259A88B2B975E6C0088A033 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +65,8 @@
 		E2324FCE2B8D6BA50097FA18 /* CupcakeCorner */ = {
 			isa = PBXGroup;
 			children = (
-				E259A8892B96AA1B0088A033 /* AddressView.swift */,
-				E259A8852B96A5960088A033 /* CupcakeCornerHomeView.swift */,
-				E259A8872B96A5C70088A033 /* Order.swift */,
+				E2C15A642BB225D000485633 /* Data */,
+				E2C15A632BB225B800485633 /* Views */,
 				E2324FDD2B8D6F830097FA18 /* Practice */,
 				E2324FCF2B8D6BA50097FA18 /* CupcakeCornerApp.swift */,
 				E2324FD32B8D6BA80097FA18 /* Assets.xcassets */,
@@ -91,6 +92,24 @@
 				E259A8832B96A3B40088A033 /* CodableConformanceView.swift */,
 			);
 			path = Practice;
+			sourceTree = "<group>";
+		};
+		E2C15A632BB225B800485633 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E259A8892B96AA1B0088A033 /* AddressView.swift */,
+				E259A88B2B975E6C0088A033 /* CheckoutView.swift */,
+				E259A8852B96A5960088A033 /* CupcakeCornerHomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E2C15A642BB225D000485633 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E259A8872B96A5C70088A033 /* Order.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +190,7 @@
 				E259A88A2B96AA1B0088A033 /* AddressView.swift in Sources */,
 				E2324FDF2B8D6FC70097FA18 /* AsyncImageView.swift in Sources */,
 				E259A8882B96A5C70088A033 /* Order.swift in Sources */,
+				E259A88C2B975E6C0088A033 /* CheckoutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
