@@ -11,6 +11,8 @@ struct CheckoutView: View {
     
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
+    @State private var failureMessage = ""
+    @State private var showingFailure = false
 
     var order: Order
     
@@ -44,6 +46,11 @@ struct CheckoutView: View {
             Button("OK") { }
         } message: {
             Text(confirmationMessage)
+        }        
+        .alert("Order Failed", isPresented: $showingFailure) {
+            Button("OK") { }
+        } message: {
+            Text(failureMessage)
         }
     }
     
@@ -58,7 +65,7 @@ struct CheckoutView: View {
         let url = URL(string: "https://reqres.in/api/cupcakes")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+        //request.httpMethod = "POST"
         
         /// 3. Run that request and process the response.
         do {
@@ -68,6 +75,8 @@ struct CheckoutView: View {
             showingConfirmation = true
         } catch {
             print("Checkout failed: \(error.localizedDescription)")
+            failureMessage = "Checkout failed: \(error.localizedDescription)"
+            showingFailure = true
         }
     }
 }
