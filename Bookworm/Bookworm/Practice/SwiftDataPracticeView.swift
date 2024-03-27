@@ -1,14 +1,14 @@
 //
-//  ContentView.swift
+//  SwiftDataPracticeView.swift
 //  Bookworm
 //
-//  Created by Tom Reilly on 3/26/24.
+//  Created by Tom Reilly on 3/27/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct SwiftDataPracticeView: View {
     @Query var students: [Student]
     @Environment(\.modelContext) var modelContext
     
@@ -32,10 +32,8 @@ struct ContentView: View {
             }
         }
     }
-
 }
 
 #Preview {
-    ContentView()
+    SwiftDataPracticeView()
 }
-
