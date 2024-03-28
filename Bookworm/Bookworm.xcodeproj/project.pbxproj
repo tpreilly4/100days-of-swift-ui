@@ -19,6 +19,7 @@
 		E2C15A8B2BB49F8F00485633 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C15A8A2BB49F8F00485633 /* AddBookView.swift */; };
 		E2C15A8F2BB4A20000485633 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C15A8E2BB4A20000485633 /* RatingView.swift */; };
 		E2C15A912BB4A50C00485633 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C15A902BB4A50C00485633 /* EmojiRatingView.swift */; };
+		E2C15A932BB4BF1A00485633 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C15A922BB4BF1A00485633 /* BookDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		E2C15A8A2BB49F8F00485633 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		E2C15A8E2BB4A20000485633 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		E2C15A902BB4A50C00485633 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
+		E2C15A922BB4BF1A00485633 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				E2C15A732BB3612B00485633 /* ContentView.swift */,
+				E2C15A922BB4BF1A00485633 /* BookDetailView.swift */,
 				E2C15A902BB4A50C00485633 /* EmojiRatingView.swift */,
 				E2C15A8E2BB4A20000485633 /* RatingView.swift */,
 				E2C15A8A2BB49F8F00485633 /* AddBookView.swift */,
@@ -193,6 +196,7 @@
 				E2C15A8B2BB49F8F00485633 /* AddBookView.swift in Sources */,
 				E2C15A802BB463BC00485633 /* Student.swift in Sources */,
 				E2C15A722BB3612B00485633 /* BookwormApp.swift in Sources */,
+				E2C15A932BB4BF1A00485633 /* BookDetailView.swift in Sources */,
 				E2C15A892BB49F2F00485633 /* SwiftDataPracticeView.swift in Sources */,
 				E2C15A822BB4657800485633 /* PushButton.swift in Sources */,
 			);
