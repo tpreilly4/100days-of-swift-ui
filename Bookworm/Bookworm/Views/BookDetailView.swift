@@ -40,6 +40,12 @@ struct BookDetailView: View {
 
             RatingView(rating: .constant(book.rating))
                 .font(.largeTitle)
+
+            HStack {
+                Text("Rated on")
+                Text(book.date, format: .dateTime.day().month().year())
+            }
+            .padding()
         }
         .navigationTitle(book.title)
         .navigationBarTitleDisplayMode(.inline)
@@ -74,7 +80,7 @@ struct BookDetailView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Book.self, configurations: config)
         // Create our dummy data
-        let example = Book(title: "Test Book", author: "Test Author", genre: "Fantasy", review: "This was a great book; I really enjoyed it.", rating: 4)
+        let example = Book(title: "Test Book", author: "Test Author", genre: "Fantasy", review: "This was a great book; I really enjoyed it.", rating: 4, date: Date.now)
         // set our modelcontainer
         return BookDetailView(book: example)
             .modelContainer(container)
