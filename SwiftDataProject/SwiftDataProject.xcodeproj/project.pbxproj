@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E27039002BC327C6000F2057 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27038FF2BC327C6000F2057 /* User.swift */; };
 		E27039032BC32C31000F2057 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27039022BC32C31000F2057 /* EditUserView.swift */; };
+		E27039052BC4876C000F2057 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27039042BC4876C000F2057 /* UsersView.swift */; };
+		E27039072BC48CD6000F2057 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27039062BC48CD6000F2057 /* Job.swift */; };
 		E2C15AA32BB649A600485633 /* SwiftDataProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C15AA22BB649A600485633 /* SwiftDataProjectApp.swift */; };
 		E2C15AA52BB649A600485633 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C15AA42BB649A600485633 /* ContentView.swift */; };
 		E2C15AA72BB649A700485633 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2C15AA62BB649A700485633 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* Begin PBXFileReference section */
 		E27038FF2BC327C6000F2057 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E27039022BC32C31000F2057 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
+		E27039042BC4876C000F2057 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		E27039062BC48CD6000F2057 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		E2C15A9F2BB649A600485633 /* SwiftDataProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDataProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C15AA22BB649A600485633 /* SwiftDataProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataProjectApp.swift; sourceTree = "<group>"; };
 		E2C15AA42BB649A600485633 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +44,7 @@
 			isa = PBXGroup;
 			children = (
 				E27038FF2BC327C6000F2057 /* User.swift */,
+				E27039062BC48CD6000F2057 /* Job.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -49,6 +54,7 @@
 			children = (
 				E27039022BC32C31000F2057 /* EditUserView.swift */,
 				E2C15AA42BB649A600485633 /* ContentView.swift */,
+				E27039042BC4876C000F2057 /* UsersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +165,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E27039052BC4876C000F2057 /* UsersView.swift in Sources */,
+				E27039072BC48CD6000F2057 /* Job.swift in Sources */,
 				E2C15AA52BB649A600485633 /* ContentView.swift in Sources */,
 				E27039032BC32C31000F2057 /* EditUserView.swift in Sources */,
 				E2C15AA32BB649A600485633 /* SwiftDataProjectApp.swift in Sources */,
