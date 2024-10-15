@@ -20,17 +20,25 @@ struct UsersView: View {
     
     var body: some View {
         List(users) { user in
-            Text(user.name)
-            
-            Spacer()
-
-            Text(String(user.jobs.count))
-                .fontWeight(.black)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .background(.blue)
-                .foregroundStyle(.white)
-                .clipShape(.capsule)
+            HStack{
+                VStack{
+                    Text(user.name)
+                    Text(user.joinDate.formatted(.dateTime))
+                }
+                Spacer()
+                Text(String(user.unwrappedJobs.count))
+                    .fontWeight(.black)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(.blue)
+                    .foregroundStyle(.white)
+                    .clipShape(.capsule)
+            }
+        }
+        .toolbar{
+            Button("Sample") {
+                addSample()
+            }
         }
     }
     
@@ -41,8 +49,8 @@ struct UsersView: View {
 
         modelContext.insert(user1)
 
-        user1.jobs.append(job1)
-        user1.jobs.append(job2)
+        user1.jobs?.append(job1)
+        user1.jobs?.append(job2)
     }
 }
 
