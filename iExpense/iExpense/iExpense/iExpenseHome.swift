@@ -6,99 +6,57 @@
 //
 
 import SwiftUI
-
-struct ExpenseItem : Identifiable, Codable, Hashable {
-    var id = UUID()
-    let name: String
-    let category: String
-    let amount: Double
-}
-
-@Observable
-class Expenses {
-    var items = [ExpenseItem]() {
-        didSet {
-            if let encoded = try? JSONEncoder().encode(items) {
-                UserDefaults.standard.set(encoded, forKey:"Items")
-            }
-        }
-    }
-    
-    init() {
-        if let savedItems = UserDefaults.standard.data(forKey: "Items") {
-            if let decodedItems = try? JSONDecoder().decode([ExpenseItem].self, from: savedItems) {
-                items = decodedItems
-                return
-            }
-        }
-        items = []
-    }
-}
+import SwiftData
 
 struct iExpenseHome: View {
-    @State private var expenses = Expenses()
+    @Query var expenses: [ExpenseItem]
+    @Environment(\.modelContext) var modelContext
+    
     @State private var showingAddExpense = false
+    
+    @State private var sortType = [
+        SortDescriptor(\ExpenseItem.name),
+        SortDescriptor(\ExpenseItem.amount)
+    ]
+    
+    @State private var filterType = "All"
     
     var body : some View {
         NavigationStack{
-            List{
-                Section ("Personal Expenses") {
-                    ForEach(expenses.items) { item in
-                        if item.category == "Personal" {
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    Text(item.name)
-                                        .font(.headline)
-                                    Text(item.category)
-                                }
-                                Spacer()
-                                Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                    .foregroundStyle(amountColorChooser(amt: item.amount))
-                            }
-                        }
-                    }
-                    .onDelete(perform: removeItems)
-                }                
-                Section ("Business Expenses") {
-                    ForEach(expenses.items) { item in
-                        if item.category == "Business" {
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    Text(item.name)
-                                        .font(.headline)
-                                    Text(item.category)
-                                }
-                                Spacer()
-                                Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                    .foregroundStyle(amountColorChooser(amt: item.amount))
-                            }
-                        }
-                    }
-                    .onDelete(perform: removeItems)
-                }
+            VStack{
+                ExpenseItemsView(sortType: sortType, filterType: filterType)
             }
             .navigationTitle("iExpense")
             .toolbar {
-                NavigationLink(destination: AddExpenseView(expenses: $expenses)) {
+                NavigationLink(destination: AddExpenseView()) {
                     Image(systemName: "plus")
+                }
+                Menu("Sort", systemImage: "arrow.up.arrow.down"){
+                    Picker("Sort By", selection: $sortType) {
+                        Text("Name")
+                            .tag([
+                                SortDescriptor(\ExpenseItem.name),
+                                SortDescriptor(\ExpenseItem.amount)
+                            ])
+                        Text("Amount")
+                            .tag([
+                                SortDescriptor(\ExpenseItem.amount),
+                                SortDescriptor(\ExpenseItem.name)
+                            ])
+                    }
+                }
+                Menu("Filter", systemImage: "line.3.horizontal.decrease.circle"){
+                    Picker("Sort By", selection: $filterType) {
+                        Text("Business")
+                            .tag("Business")
+                        Text("Personal")
+                            .tag("Personal")
+                        Text("All")
+                            .tag("All")
+                    }
                 }
             }
         }
-    }
-    
-    func amountColorChooser(amt: Double) -> Color {
-        if amt < 10 {
-            return Color.green
-        } else if amt < 100 {
-            return Color.orange
-        } else {
-            return Color.red
-        }
-        
-    }
-    
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
     }
 }
 

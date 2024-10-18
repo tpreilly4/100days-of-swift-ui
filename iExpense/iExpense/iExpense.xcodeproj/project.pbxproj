@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		E2324E8A2B8135030097FA18 /* UserDefaultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E892B8135030097FA18 /* UserDefaultsView.swift */; };
 		E2324E8C2B81524E0097FA18 /* iExpenseHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E8B2B81524E0097FA18 /* iExpenseHome.swift */; };
 		E2324E8E2B815B250097FA18 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2324E8D2B815B250097FA18 /* AddExpenseView.swift */; };
+		E2CE292D2CC2F36D003D019F /* ExpenseItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE292C2CC2F36D003D019F /* ExpenseItemsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,13 @@
 		E2324E892B8135030097FA18 /* UserDefaultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsView.swift; sourceTree = "<group>"; };
 		E2324E8B2B81524E0097FA18 /* iExpenseHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseHome.swift; sourceTree = "<group>"; };
 		E2324E8D2B815B250097FA18 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		E2CE29262CBF03F6003D019F /* iExpense.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iExpense.entitlements; sourceTree = "<group>"; };
+		E2CE292C2CC2F36D003D019F /* ExpenseItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E2CE29272CC17549003D019F /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E2324E732B7EC0130097FA18 /* Frameworks */ = {
@@ -59,9 +66,12 @@
 		E2324E782B7EC0130097FA18 /* iExpense */ = {
 			isa = PBXGroup;
 			children = (
+				E2CE29272CC17549003D019F /* Data */,
+				E2CE29262CBF03F6003D019F /* iExpense.entitlements */,
 				E2324E872B8132880097FA18 /* OnDeleteView.swift */,
 				E2324E792B7EC0130097FA18 /* iExpenseApp.swift */,
 				E2324E8B2B81524E0097FA18 /* iExpenseHome.swift */,
+				E2CE292C2CC2F36D003D019F /* ExpenseItemsView.swift */,
 				E2324E8D2B815B250097FA18 /* AddExpenseView.swift */,
 				E2324E7B2B7EC0130097FA18 /* ContentView.swift */,
 				E2324E7D2B7EC0150097FA18 /* Assets.xcassets */,
@@ -93,6 +103,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E2CE29272CC17549003D019F /* Data */,
 			);
 			name = iExpense;
 			productName = iExpense;
@@ -154,6 +167,7 @@
 				E2324E882B8132880097FA18 /* OnDeleteView.swift in Sources */,
 				E2324E8E2B815B250097FA18 /* AddExpenseView.swift in Sources */,
 				E2324E7A2B7EC0130097FA18 /* iExpenseApp.swift in Sources */,
+				E2CE292D2CC2F36D003D019F /* ExpenseItemsView.swift in Sources */,
 				E2324E8A2B8135030097FA18 /* UserDefaultsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iExpense/iExpense.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iExpense/Preview Content\"";
@@ -314,6 +329,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iExpense/iExpense.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iExpense/Preview Content\"";
