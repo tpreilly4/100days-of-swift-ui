@@ -7,30 +7,19 @@
 
 import SwiftUI
 
-struct Response: Codable {
-    var results: [User]
-}
-
 struct ContentView: View {
     @State private var users = [User]()
     
     var body: some View {
         NavigationStack {
             List(users) { user in
-                VStack{
-                    HStack{
-                        Text(user.name)
-                        Spacer()
-                        if user.isActive {
-                            Image(systemName: "waveform")
-                                .foregroundStyle(.green)
-                        } else {
-                            Image(systemName: "powersleep")
-                                .foregroundStyle(.gray)
-                        }
-                    }
+                NavigationLink {
+                    UserView(user: user)
+                } label : {
+                    UserListItemView(user: user)
                 }
             }
+
             .task {
                 await loadData()
             }
@@ -38,6 +27,12 @@ struct ContentView: View {
     }
     
     func loadData() async {
+        if !users.isEmpty {
+            return
+        }
+
+        print("GETTIN DAT DATA")
+        
         guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
             print("Invalid URL")
             return
@@ -59,3 +54,5 @@ struct ContentView: View {
 #Preview {
     //ContentView()
 }
+
+
