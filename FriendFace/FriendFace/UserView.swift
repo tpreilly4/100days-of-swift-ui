@@ -6,9 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct UserView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var friends: [User]
+
     let user: User
+    
+    init(user: User) {
+        self.user = user
+        let friendIds = user.friends.map { $0.id }
+        _friends = Query(filter: #Predicate<User> { friend in
+            friendIds.contains(friend.id)
+        })
+    }
     
     var body: some View {
         NavigationStack{
@@ -43,8 +55,12 @@ struct UserView: View {
                     }
                 }
                 Section("Friends") {
-                    ForEach(user.friends) { friend in
-                        Text(friend.name)
+                    ForEach(friends) { friend in
+                        NavigationLink {
+                            UserView(user: friend)
+                        } label : {
+                            UserListItemView(user: friend)
+                        }
                     }
                 }
             }

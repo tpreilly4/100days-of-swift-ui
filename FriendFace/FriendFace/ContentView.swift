@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @State private var users = [User]()
+    //@State private var users = [User]()
+    @Query var users: [User]
+    @Environment(\.modelContext) var modelContext
     
     var body: some View {
         NavigationStack {
@@ -28,10 +31,11 @@ struct ContentView: View {
     
     func loadData() async {
         if !users.isEmpty {
+            print("We already got dat data.")
             return
         }
 
-        print("GETTIN DAT DATA")
+        print("GETTIN DAT DATA.")
         
         guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
             print("Invalid URL")
@@ -41,7 +45,9 @@ struct ContentView: View {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
-                users = decodedResponse
+                for user in decodedResponse {
+                    modelContext.insert(user)
+                }
             } else {
                 print("Unable to decode user data")
             }
