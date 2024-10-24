@@ -35,7 +35,7 @@ struct UserView: View {
                     Text(String(user.age))
                 }
                 Section("Registered") {
-                    Text(user.registered)
+                    Text(user.registered.formatted())
                 }
                 Section("Tags") {
                     ForEach(user.tags, id: \.self) { tag in
@@ -54,5 +54,5 @@ struct UserView: View {
 }
 
 #Preview {
-    UserView(user: User.defaultUser)
+    //UserView(user: User.defaultUser)
 }

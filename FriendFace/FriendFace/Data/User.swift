@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SwiftData
 
-struct User: Codable, Identifiable {
-    var id: String
+@Model
+class User: Codable, Identifiable {
+    var id: UUID
     var isActive: Bool
     var name: String
     var age: Int
@@ -16,30 +18,68 @@ struct User: Codable, Identifiable {
     var email: String
     var address: String
     var about: String
-    var registered: String
+    var registered: Date
     var tags: [String]
     var friends: [Friend]
     
-    static let defaultUser = User(
-        id: "3b121997-457d-42b3-91a7-78aa822dd812",
-        isActive: true,
-        name: "Tom Reilly",
-        age: 29,
-        company: "ClockShark",
-        email: "tomreilly@clockshark.com",
-        address: "120 Neilson Street",
-        about: """
-        Magna non duis velit qui esse est Lorem dolor elit duis reprehenderit sit enim non. Fugiat aliquip ex quis dolor et officia occaecat aute irure nisi tempor esse. Excepteur occaecat ut est esse pariatur in nostrud Lorem minim incididunt aute. Magna non duis velit qui esse est Lorem dolor elit duis reprehenderit sit enim non. Fugiat aliquip ex quis dolor et officia occaecat aute irure nisi tempor esse. Excepteur occaecat ut est esse pariatur in nostrud Lorem minim incididunt aute. Magna non duis velit qui esse est Lorem dolor elit duis reprehenderit sit enim non. Fugiat aliquip ex quis dolor et officia occaecat aute irure nisi tempor esse. Excepteur occaecat ut est esse pariatur in nostrud Lorem minim incididunt aute.
-        """,
-        registered: "2015-11-15T05:11:33-00:00",
-        tags: [
-            "aliquip", "aliquip", "velit", "aliqua", "ad", "magna", "nulla"
-        ],
-        friends: [
-            Friend(id: "ea523efb-0ce5-4892-844e-9d55ce680588", name: "Katharine Lee"),
-            Friend(id: "709dd627-900c-48f2-8b12-a42fe2695e31", name: "Humphrey Montoya"),
-            Friend(id: "88a7d5d2-0808-4e5a-bff6-a0d122df2c46", name: "Barnett Heath"),
-            Friend(id: "f2ec2b87-4eac-444f-94e4-19197e87b7f7", name: "Carmen Dillon")
-        ]
-    )
+    enum CodingKeys: CodingKey {
+        case id
+        case isActive
+        case name
+        case age
+        case company
+        case email
+        case address
+        case about
+        case registered
+        case tags
+        case friends
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // handle conversion from string to UUID
+        let stringId = try container.decode(String.self, forKey: .id)
+        guard let uuid = UUID(uuidString: stringId) else {
+            throw DecodingError.dataCorruptedError(forKey: .id, in: container, debugDescription: "Invalid UUID string")
+        }
+        self.id = uuid
+        
+        // handle conversion from string to Date
+        let stringRegisteredDate = try container.decode(String.self, forKey: .registered)
+        guard let date = ISO8601DateFormatter().date(from: stringRegisteredDate) else {
+            throw DecodingError.dataCorruptedError(forKey: .registered, in: container, debugDescription: "Invalid ISO8601 date string")
+        }
+        self.registered = date
+        
+        self.isActive = try container.decode(Bool.self, forKey: .isActive)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.age = try container.decode(Int.self, forKey: .age)
+        self.company = try container.decode(String.self, forKey: .company)
+        self.email = try container.decode(String.self, forKey: .email)
+        self.address = try container.decode(String.self, forKey: .address)
+        self.about = try container.decode(String.self, forKey: .about)
+        self.tags = try container.decode([String].self, forKey: .tags)
+        self.friends = try container.decode([Friend].self, forKey: .friends)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        // Perform conversions needed for uuid -> String & Date -> String
+        try container.encode(self.id.uuidString.lowercased(), forKey: .id)
+        let isoFormatter = ISO8601DateFormatter()
+        try container.encode(isoFormatter.string(from: self.registered), forKey: .registered)
+        
+        try container.encode(isActive, forKey: .isActive)
+        try container.encode(name, forKey: .name)
+        try container.encode(age, forKey: .age)
+        try container.encode(company, forKey: .company)
+        try container.encode(email, forKey: .email)
+        try container.encode(address, forKey: .address)
+        try container.encode(about, forKey: .about)
+        try container.encode(tags, forKey: .tags)
+        try container.encode(friends, forKey: .friends)
+    }
 }
